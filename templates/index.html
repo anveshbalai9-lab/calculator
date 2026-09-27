@@ -1,0 +1,85 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Voice Calculator</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+
+    <body>
+
+    <div class="calculator">
+        <h1>🎤 Voice Calculator</h1>
+        <p id="status" class="status">Ready</p>
+
+        <div class="display-container">
+            <input type="text" id="display" class="display" readonly>
+            <div id="listening-indicator" class="listening-dot hidden"></div>
+        </div>
+
+        <section id="voiceProcess" class="voice-process" aria-live="polite">
+            <div class="process-heading">
+                <h2>Voice process</h2>
+                <button id="clearProcessBtn" class="clear-process-btn" type="button">Clear steps</button>
+            </div>
+            <ol id="processSteps" class="process-steps">
+                <li class="process-empty">Your voice steps will appear here.</li>
+            </ol>
+        </section>
+
+        <div class="voice-controls">
+            <button id="voiceBtn" class="voice-btn" onclick="toggleVoice()">🎤 Voice Input</button>
+            <button id="speakBtn" class="speak-btn" onclick="speakResult()">🔊 Speak Result</button>
+        </div>
+
+        <div class="buttons-grid">
+            <!-- Row 1 -->
+            <button class="btn function-btn" onclick="appendToDisplay('(')">( )</button>
+            <button class="btn function-btn" onclick="appendToDisplay('sqrt(')">√</button>
+            <button class="btn function-btn" onclick="appendToDisplay('sin(')">sin</button>
+            <button class="btn function-btn" onclick="appendToDisplay('cos(')">cos</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('/')">÷</button>
+
+            <!-- Row 2 -->
+            <button class="btn number-btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn number-btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn number-btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('*')">×</button>
+            <button class="btn clear-btn" onclick="clearDisplay()">C</button>
+
+            <!-- Row 3 -->
+            <button class="btn number-btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn number-btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn number-btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('-')">−</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('%')">%</button>
+
+            <!-- Row 4 -->
+            <button class="btn number-btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn number-btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn number-btn" onclick="appendToDisplay('3')">3</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('+')">+</button>
+            <button class="btn decimal-btn" onclick="appendToDisplay('.')">,</button>
+
+            <!-- Row 5 -->
+            <button class="btn number-btn" onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
+            <button class="btn function-btn" onclick="appendToDisplay('tan(')">tan</button>
+            <button class="btn function-btn" onclick="appendToDisplay('math.pi')">π</button>
+            <button class="btn equals-btn" onclick="calculate()" style="grid-column: span 2;">=</button>
+        </div>
+
+        <div class="voice-help hidden" id="voiceHelp">
+            <h3>💬 Say something like:</h3>
+            <ul>
+                <li>"Five plus three"</li>
+                <li>"Twenty divided by four"</li>
+                <li>"Square root of sixteen"</li>
+                <li>"Clear" or "Reset"</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+
+    </body>
+    </html>
+
